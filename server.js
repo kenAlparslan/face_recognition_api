@@ -1,11 +1,12 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
+const cors = require('cors');
 
 console.log(bcrypt.compareSync('banana', '$2a$10$kf9cIHVxM.3CHw2UbMG6XOz9MaOUUgkhmhcjlm3MFVkiPQHd/8GNq'));
 
 const app = express();
 app.use(express.json());
-
+app.use(cors());
 const database = {
 	users: [
 		{
@@ -29,7 +30,7 @@ const database = {
 }
 
 app.get('/', (req, res) => {
-	res.send(database.users);
+	res.json(database.users);
 })
 
 app.post('/signin', (req, res) => {

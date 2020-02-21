@@ -2,7 +2,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const cors = require('cors');
 
-console.log(bcrypt.compareSync('banana', '$2a$10$kf9cIHVxM.3CHw2UbMG6XOz9MaOUUgkhmhcjlm3MFVkiPQHd/8GNq'));
+//console.log(bcrypt.compareSync('banana', '$2a$10$kf9cIHVxM.3CHw2UbMG6XOz9MaOUUgkhmhcjlm3MFVkiPQHd/8GNq'));
 
 const app = express();
 app.use(express.json());
@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
 app.post('/signin', (req, res) => {
 	if (req.body.email === database.users[0].email &&
 		 req.body.password === database.users[0].password) {
-		res.json('success');
+		res.json(database.users[0]);
 	} else {
 		res.status('404').json('error logging in');
 	}
@@ -52,7 +52,7 @@ app.post('/register', (req, res) => {
 		id: '125',
 		name: name,
 		email: email,
-		password: hash,
+		//password: hash,
 		entries: 0,
 		joined: new Date()
 	})

@@ -2,7 +2,6 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const cors = require('cors');
 const knex = require('knex');
-const cred = require('./config');
 
 const register = require('./controllers/register');
 const signin = require('./controllers/signin');
@@ -12,12 +11,11 @@ const image = require('./controllers/image');
 const db = knex({
   client: 'pg',
   connection: {
-    host : cred.host,
-    user : cred.user,
-    password : cred.password,
-    database : cred.database
+    host : process.env.DATABASE_URL,
+    ssl: tru
   }
 });
+
 
 // db.select('*').from('users').then(data => {
 // 	console.log(data);

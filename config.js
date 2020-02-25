@@ -1,7 +1,7 @@
 const config = {
 	"password": "toor",
 	"database": "face-recognition",
-	"host" : "127.0.0.1",
+	"host" : "postgresql-corrugated-72492",
     "user" : "postgres"
 }
 
